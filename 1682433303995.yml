@@ -1,24 +1,63 @@
-port: 7890
-socks-port: 7891
-allow-lan: true
-mode: Rule
+port: 7890       # Clash监听端口  
+socks-port: 7891 # socks5代理端口
+allow-lan: true  # 允许局域网连接 
+mode: Rule       
 log-level: info
-external-controller: 127.0.0.1:9090
-proxies: null
-proxy-groups: 
-  - name: 🛑 全球拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
+
+proxies:
+  - name: "🚀 Direct"
+    type: direct
+  - name: "🍃 Proxy"
+    server: server.example.com 
+    port: 443 
+    type: vmess 
+    uuid: uuid 
+  - name: "📱 rejection" 
+    type: reject
+
+proxy-groups:
+  - name: "Proxy" 
+    type: select 
+    proxies: 
+      - 🍃 Proxy
+
+rules:
+- IP-CIDR,192.168.0.0/16,DIRECT               #局域网IP直接连接 
+- MATCH,📱 rejection,*                        #其他连接通过rejection拦截
+
+strategy:    
+  - type: blacklist 
+    domain: 
+      - "example.com"                         #屏蔽example.com网站
+      - "ks.pull.yximgs.com"
+      - "ks-origin.pull.yximgs.com"
+      - "ks-livemate.pull.yximgs.com"
+      - "amdcopen.m.taobao.com"
+      - "bd-pclivemate.pullyximgs.com"
+      - "api-access.pangonlin-sdk-toutiao.com"
+      - "log-api.pangonlin-sdk-toutiao.com"
+
+# port: 7890
+# socks-port: 7891
+# allow-lan: true
+# mode: Rule
+# log-level: info
+# external-controller: 127.0.0.1:9090
+# proxies: null
+# proxy-groups: 
+#   - name: 🛑 全球拦截
+#     type: select
+#     proxies:
+#       - REJECT
+#       - DIRECT
       
-rules: 
-  - DOMAIN-SUFFIX,ad-brix.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,ks.pull.yximgs.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,ks-origin.pull.yximgs.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,ks-livemate.pull.yximgs.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,amdcopen.m.taobao.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,bd-pclivemate.pullyximgs.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,api-access.pangonlin-sdk-toutiao.com,🛑 全球拦截
-  - DOMAIN-SUFFIX,log-api.pangonlin-sdk-toutiao.com,🛑 全球拦截
-  - IP-CIDR,222.186.12.235/32,🛑 全球拦截,no-resolve
+# rules: 
+#   - DOMAIN-SUFFIX,ad-brix.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,ks.pull.yximgs.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,ks-origin.pull.yximgs.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,ks-livemate.pull.yximgs.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,amdcopen.m.taobao.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,bd-pclivemate.pullyximgs.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,api-access.pangonlin-sdk-toutiao.com,🛑 全球拦截
+#   - DOMAIN-SUFFIX,log-api.pangonlin-sdk-toutiao.com,🛑 全球拦截
+#   - IP-CIDR,222.186.12.235/32,🛑 全球拦截,no-resolve
