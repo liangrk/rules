@@ -33,6 +33,7 @@ rules:
   - 'DOMAIN-SUFFIX,log-api.pangonlin-sdk-toutiao.com,AdsServer'
   # - 'IP-CIDR, 192.168.0.0/16, DIRECT'
   # - 'MATCH, rejection, *'
+  # update
 
 
 # port: 7890
