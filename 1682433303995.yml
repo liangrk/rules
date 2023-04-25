@@ -22,8 +22,8 @@ proxy-groups:
       - 🍃 Proxy
 
 rules:
-- IP-CIDR,192.168.0.0/16,DIRECT               #局域网IP直接连接 
-- MATCH,📱 rejection,*                        #其他连接通过rejection拦截
+  - IP-CIDR,192.168.0.0/16,DIRECT               #局域网IP直接连接 
+  - MATCH,📱 rejection,*                        #其他连接通过rejection拦截
 
 strategy:    
   - type: blacklist 
