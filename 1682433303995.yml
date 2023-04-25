@@ -1,6 +1,6 @@
 port: 7890       # Clash监听端口  
 socks-port: 7891 # socks5代理端口
-allow-lan: true  # 允许局域网连接 
+allow-lan: false # 允许局域网连接 
 mode: Rule       
 log-level: info
 
