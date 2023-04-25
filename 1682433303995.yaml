@@ -19,7 +19,7 @@ dns:
     fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://1.0.0.1:853', 'tls://8.8.4.4:853']
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-    - { name: '屏蔽ADS', type: ss, server: server.sample.com, port: 443, password: serversmaplepwd, udp: true }
+    - { name: '屏蔽ADS', type: ss, server: server.sample.com, port: 443, cipher: aes-128-gcm, password: serversmaplepwd, udp: true }
 proxy-groups:
     - { name: 'AdsServer', type: select, proxies: ['屏蔽ADS'] }
 
