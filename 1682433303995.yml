@@ -4,7 +4,7 @@ allow-lan: true  # 允许局域网连接
 mode: Rule       
 log-level: info
 
-proxies:
+proxies: 
   - name: "🚀 Direct"
     type: direct
   - name: "🍃 Proxy"
@@ -15,27 +15,23 @@ proxies:
   - name: "📱 rejection" 
     type: reject
 
-proxy-groups:
+proxy-groups: 
   - name: "Proxy" 
     type: select 
     proxies: 
       - 🍃 Proxy
 
-rules:
-  - IP-CIDR,192.168.0.0/16,DIRECT               #局域网IP直接连接 
-  - MATCH,📱 rejection,*                        #其他连接通过rejection拦截
+rules: 
+  - DOMAIN-SUFFIX,"ks.pull.yximgs.com",📱 rejection
+  - DOMAIN-SUFFIX,"ks-origin.pull.yximgs.com",📱 rejection
+  - DOMAIN-SUFFIX,"ks-livemate.pull.yximgs.com",📱 rejection
+  - DOMAIN-SUFFIX,"amdcopen.m.taobao.com",📱 rejection
+  - DOMAIN-SUFFIX,"bd-pclivemate.pullyximgs.com",📱 rejection
+  - DOMAIN-SUFFIX,"api-access.pangonlin-sdk-toutiao.com",📱 rejection
+  - DOMAIN-SUFFIX,"log-api.pangonlin-sdk-toutiao.com",📱 rejection
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - MATCH,📱 rejection,*
 
-strategy:    
-  - type: blacklist 
-    domain: 
-      - "example.com"                         #屏蔽example.com网站
-      - "ks.pull.yximgs.com"
-      - "ks-origin.pull.yximgs.com"
-      - "ks-livemate.pull.yximgs.com"
-      - "amdcopen.m.taobao.com"
-      - "bd-pclivemate.pullyximgs.com"
-      - "api-access.pangonlin-sdk-toutiao.com"
-      - "log-api.pangonlin-sdk-toutiao.com"
 
 # port: 7890
 # socks-port: 7891
