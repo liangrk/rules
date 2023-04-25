@@ -19,18 +19,18 @@ dns:
     fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://1.0.0.1:853', 'tls://8.8.4.4:853']
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-    - { name: '屏蔽ADS', type: ss }
+    - { name: '屏蔽ADS', type: ss, server: 0.0.0.0, port: 9090 }
 proxy-groups:
-    - { name: 'Ads-Server', type: select, proxies: ['屏蔽ADS'] }
+    - { name: 'AdsServer', type: select, proxies: ['屏蔽ADS'] }
 
 rules:
-  - 'DOMAIN-SUFFIX,ks.pull.yximgs.com,Ads-Server'
-  - 'DOMAIN-SUFFIX,ks-origin.pull.yximgs.com,Ads-Server'
-  - 'DOMAIN-SUFFIX,ks-livemate.pull.yximgs.com,Ads-Server'
-  - 'DOMAIN-SUFFIX,amdcopen.m.taobao.com,Ads-Server'
-  - 'DOMAIN-SUFFIX,bd-pclivemate.pullyximgs.com,Ads-Server'
-  - 'DOMAIN-SUFFIX,api-access.pangonlin-sdk-toutiao.com,Ads-Server'
-  - 'DOMAIN-SUFFIX,log-api.pangonlin-sdk-toutiao.com,Ads-Server'
+  - 'DOMAIN-SUFFIX,ks.pull.yximgs.com,AdsServer'
+  - 'DOMAIN-SUFFIX,ks-origin.pull.yximgs.com,AdsServer'
+  - 'DOMAIN-SUFFIX,ks-livemate.pull.yximgs.com,AdsServer'
+  - 'DOMAIN-SUFFIX,amdcopen.m.taobao.com,AdsServer'
+  - 'DOMAIN-SUFFIX,bd-pclivemate.pullyximgs.com,AdsServer'
+  - 'DOMAIN-SUFFIX,api-access.pangonlin-sdk-toutiao.com,AdsServer'
+  - 'DOMAIN-SUFFIX,log-api.pangonlin-sdk-toutiao.com,AdsServer'
   # - 'IP-CIDR, 192.168.0.0/16, DIRECT'
   # - 'MATCH, rejection, *'
 
