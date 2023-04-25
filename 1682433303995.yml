@@ -22,15 +22,15 @@ proxy-groups:
       - 🍃 Proxy
 
 rules: 
-  - DOMAIN-SUFFIX,"ks.pull.yximgs.com",📱 rejection
-  - DOMAIN-SUFFIX,"ks-origin.pull.yximgs.com",📱 rejection
-  - DOMAIN-SUFFIX,"ks-livemate.pull.yximgs.com",📱 rejection
-  - DOMAIN-SUFFIX,"amdcopen.m.taobao.com",📱 rejection
-  - DOMAIN-SUFFIX,"bd-pclivemate.pullyximgs.com",📱 rejection
-  - DOMAIN-SUFFIX,"api-access.pangonlin-sdk-toutiao.com",📱 rejection
-  - DOMAIN-SUFFIX,"log-api.pangonlin-sdk-toutiao.com",📱 rejection
+  - DOMAIN-SUFFIX, "ks.pull.yximgs.com", 📱 rejection
+  - DOMAIN-SUFFIX, "ks-origin.pull.yximgs.com", 📱 rejection
+  - DOMAIN-SUFFIX, "ks-livemate.pull.yximgs.com", 📱 rejection
+  - DOMAIN-SUFFIX, "amdcopen.m.taobao.com", 📱 rejection
+  - DOMAIN-SUFFIX, "bd-pclivemate.pullyximgs.com", 📱 rejection
+  - DOMAIN-SUFFIX, "api-access.pangonlin-sdk-toutiao.com", 📱 rejection
+  - DOMAIN-SUFFIX, "log-api.pangonlin-sdk-toutiao.com", 📱 rejection
   - IP-CIDR,192.168.0.0/16,DIRECT
-  - MATCH,📱 rejection,*
+  - MATCH, 📱 rejection, *
 
 
 # port: 7890
